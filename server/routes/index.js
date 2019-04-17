@@ -1,16 +1,15 @@
 const express = require('express')
-const app = express()
-const bodyParser = require('body-parser')
+//const path = require('path');
 
-const port = process.env.PORT || 3000 
-
-app.use(bodyParser.json())
-
-app.get('/', (req, res) => res.json({ message: 'hooray! welcome to our api!' }))
-
-// article api 
-const post = require('./post')
-app.use('/post', post)
+const router = express.Router();
 
 
-app.listen(port, () => console.log(`Listening on port ${port}!`))
+router.get('/', (req, res) => {
+    res.render('index', { msg: 'this is home page.'});
+    //res.sendFile(path.join(__dirname, '../', 'public', 'index.html'));
+
+
+});
+
+
+module.exports = router;

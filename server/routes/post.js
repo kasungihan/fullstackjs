@@ -1,4 +1,6 @@
 const express = require('express')
+// back end validate
+const Joi = require('joi');
 const slugify = require('slugify')
 
 require('../models/db');
@@ -12,7 +14,7 @@ router.get('/', (req, res) => {
 
         if(err) {
 
-            res.status(404)
+            res.status(404).json({ msg: 'data not found!'})
 
         } else {
 
